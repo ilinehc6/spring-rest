@@ -10,7 +10,6 @@ import com.example.ems.entity.Employee;
 import com.example.ems.exception.ResourceNotFoundException;
 import com.example.ems.mapper.EmployeeMapper;
 import com.example.ems.repository.EmployeeRepository;
-
 import lombok.AllArgsConstructor;
 
 @Service
@@ -25,6 +24,7 @@ public class EmployeeServiceImpl implements EmpolyeeService{
         Employee savedEmployee = employeeRepository.save(employee);
         return EmployeeMapper.mapToEmployeeDto(savedEmployee);
     }
+
     @Override
     public EmployeeDto getEmployeeById(Long employeeId) {
         Employee employee = employeeRepository.findById(employeeId)
@@ -33,12 +33,14 @@ public class EmployeeServiceImpl implements EmpolyeeService{
         return EmployeeMapper.mapToEmployeeDto(employee);
 
     }
+
     @Override
     public List<EmployeeDto> getAllEmployees() {
         List<Employee> employees = employeeRepository.findAll();
         return employees.stream()
         .map((employee) -> EmployeeMapper.mapToEmployeeDto(employee)).collect(Collectors.toList());
     }
+
     @Override
     public EmployeeDto updateEmployee(Long employeeId, EmployeeDto updatedEmployeeDto) {
         Employee employee = employeeRepository.findById(employeeId)
@@ -52,6 +54,7 @@ public class EmployeeServiceImpl implements EmpolyeeService{
         return EmployeeMapper.mapToEmployeeDto(updatedEmployee);
 
     }
+
     @Override
     public void deleteEmployee(Long employeeId) {
         Employee employee = employeeRepository.findById(employeeId)
@@ -59,7 +62,5 @@ public class EmployeeServiceImpl implements EmpolyeeService{
             );
         
         employeeRepository.deleteById(employeeId);
-    }
-
-    
+    }  
 }

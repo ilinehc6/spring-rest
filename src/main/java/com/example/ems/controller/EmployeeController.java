@@ -20,8 +20,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 
-
-
 @CrossOrigin("*")
 @AllArgsConstructor
 @RestController
@@ -36,6 +34,7 @@ public class EmployeeController {
         EmployeeDto savedEmployeeDto = empolyeeService.createEmployee(employeeDto);
         return new ResponseEntity<>(savedEmployeeDto, HttpStatus.CREATED);
     }
+
     // Build Get employee rest API
     @GetMapping("{id}")
     public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable("id") Long employeeId) {
@@ -44,12 +43,14 @@ public class EmployeeController {
 
         return ResponseEntity.ok(employeeDto);
     }
+
     // Build Get all employees rest API
     @GetMapping()
     public ResponseEntity<List<EmployeeDto>> getAllEmployees() {
         List<EmployeeDto> employees = empolyeeService.getAllEmployees();
         return ResponseEntity.ok(employees);
     }
+
     // Build Update employee rest API
     @PutMapping("{id}")
     public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable("id") Long id, 
@@ -58,6 +59,7 @@ public class EmployeeController {
         
         return ResponseEntity.ok(updatedEmployeeDto);
     }
+    
     @DeleteMapping("{id}")
     // Build Delete employee rest API
     public ResponseEntity<String> deleteEmployee(@PathVariable("id") Long employeeId){

@@ -5,8 +5,9 @@ import java.util.List;
 import com.example.ems.dto.EmployeeDto;
 
 public interface EmpolyeeService {
+    
     EmployeeDto createEmployee(EmployeeDto employeeDto);
-    //void updateEmployee(EmployeeDto employeeDto);
+
     EmployeeDto getEmployeeById(Long employeeId);
 
     List<EmployeeDto> getAllEmployees();
